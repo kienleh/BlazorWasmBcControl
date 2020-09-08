@@ -32,7 +32,7 @@ page 50149 "Test Implementation"
 
                     end;
 
-                    trigger RecieveText(MessageText: Text)
+                    trigger ReceiveText(MessageText: Text)
                     begin
                         Message(MessageText);
                     end;

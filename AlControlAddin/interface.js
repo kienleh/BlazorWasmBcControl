@@ -8,7 +8,7 @@ function PostText(messageText)
     frame.contentWindow.postMessage({call:'PostText', value: messageText}, '*');
 }
 
-// recieve messages from dotnet blazor addin
+// receive messages from dotnet blazor addin
 // create event handler
 var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 var eventer = window[eventMethod];
@@ -24,8 +24,7 @@ function handleMessage(eventData) {
     switch(eventData.call) {
         case 'sendTextToBc':
             console.log('message value: ' + eventData.value);
-            Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('RecieveText', [eventData.value]);
+            Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('ReceiveText', [eventData.value]);
             break;
     }
 }
-

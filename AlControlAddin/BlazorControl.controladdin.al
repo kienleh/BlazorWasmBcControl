@@ -12,6 +12,6 @@ controladdin BlazorControl
     Scripts = './interface.js';
 
     event ControlReady();
-    event RecieveText(MessageText: Text);
+    event ReceiveText(MessageText: Text);
     procedure PostText(MessageText: Text);
 }

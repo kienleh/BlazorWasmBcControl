@@ -11,11 +11,33 @@ Welcome to your new app.
 @code {
     private string CustomerName = "world";
     private string MessageForBc = "hello BC from Blazor";
-
+    protected override void OnInitialized()
+    {
+        OnCustNameReceive += this.customerNameHandler;
+    }
     public async Task TriggerJsPrompt()
     {
         var name = await JSRuntime.InvokeAsync<string>(
                 "dotnetJsFunctions.sendTextToBc", //implementation in wwwroot/js/messagehandler.js
                 MessageForBc);
     }
+    public void customerNameHandler(string name)
+    {
+        Console.WriteLine("eventsubscriber: customerNameHandler, data: {0}", name);
+        CustomerName = name;
+
+        this.StateHasChanged();
+    }
+
+    //event to call when receiving data from nav
+    public delegate void ReceiveCustomerName(string data);
+    public static event ReceiveCustomerName OnCustNameReceive;
+
+    [JSInvokableAttribute("SetCustomerName")]
+    public static void SetCustomerName(string name)
+    {
+        Console.WriteLine("c# received name: {0}", name);
+        OnCustNameReceive(name);
+    }
+
 }
