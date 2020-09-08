@@ -20,23 +20,20 @@ page 50149 "Test Implementation"
                     ApplicationArea = All;
                 }
             }
-            group(Blazor)
+
+            usercontrol(BlazorControl; BlazorControl)
             {
-                Caption = 'Blazor Controladdin';
-                usercontrol(BlazorControl; BlazorControl)
-                {
-                    ApplicationArea = All;
+                ApplicationArea = All;
 
-                    trigger ControlReady()
-                    begin
+                trigger ControlReady()
+                begin
+                end;
 
-                    end;
+                trigger ReceiveText(MessageText: Text)
+                begin
+                    Message(MessageText);
+                end;
 
-                    trigger ReceiveText(MessageText: Text)
-                    begin
-                        Message(MessageText);
-                    end;
-                }
             }
         }
     }
@@ -63,5 +60,10 @@ page 50149 "Test Implementation"
     trigger OnOpenPage()
     begin
         if Rec.FindFirst() then;
+    end;
+
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.BlazorControl.PostText(Rec.Name);
     end;
 }
