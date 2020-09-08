@@ -1,5 +1,5 @@
 var controlHtml = 
-    '<iframe id="blazorframe" src="https://kienleh.github.io/BlazorWasmBcControl/" title="BlazorApp" width="100%" height="100%" frameBorder="0"></iframe>';
+    '<iframe id="blazorframe" src="http://localhost:5000" title="BlazorApp" width="100%" height="100%" frameBorder="0"></iframe>';
 
 var controlAddIn = document.getElementById('controlAddIn');
 controlAddIn.innerHTML = controlHtml;

@@ -1,6 +1,6 @@
 controladdin BlazorControl
 {
-    RequestedHeight = 480;
+    RequestedHeight = 600;
     RequestedWidth = 640;
 
     VerticalStretch = true;
@@ -12,4 +12,6 @@ controladdin BlazorControl
     Scripts = './interface.js';
 
     event ControlReady();
+    event RecieveText(MessageText: Text);
+    procedure PostText(MessageText: Text);
 }

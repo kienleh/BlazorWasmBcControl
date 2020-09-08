@@ -31,7 +31,31 @@ page 50149 "Test Implementation"
                     begin
 
                     end;
+
+                    trigger RecieveText(MessageText: Text)
+                    begin
+                        Message(MessageText);
+                    end;
                 }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(PostText)
+            {
+                Caption = 'Post Customer Name';
+                ToolTip = 'Posts Customer Name to addin';
+
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    CurrPage.BlazorControl.PostText(Rec.Name);
+                end;
             }
         }
     }
